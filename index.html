@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Number Checker</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #ff69b4; /* Pink background color */
+        background-image: linear-gradient(45deg, #ff69b4, #f06292, #ba68c8, #9575cd, #7986cb, #64b5f6, #4fc3f7, #4dd0e1, #4db6ac, #81c784, #aed581, #ffeb3b, #ffca28, #ffb300, #ff8f00, #ff6f00);
+        background-size: 300% 300%;
+        animation: gradientAnimation 15s ease infinite;
+    }
+    .container {
+        max-width: 400px;
+        width: 100%;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    input[type="text"] {
+        width: calc(100% - 22px); /* Subtract padding and border width */
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    button {
+        width: 100%;
+        background-color: #FFC0CB;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #FFC0CB;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .explanation {
+        max-width: 600px;
+        width: 100%;
+        background-color: rgba(243, 21, 21, 0.459);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    footer {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 14px;
+        color: #333;
+    }
+    /* Background color changing animation */
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Scientific Number Checker</h2>
+    <input type="text" id="numberInput" placeholder="Enter a number">
+    <button onclick="checkNumber()">Check</button>
+    <p id="result"></p>
+</div>
+
+<div class="explanation">
+    <h3>Explanation of Scientific Notation</h3>
+    <p>Scientific notation, also known as standard form or exponential notation, is a way of expressing very large or very small numbers. It is commonly used in scientific and engineering notation to simplify the representation of numbers that are either very large or very small in magnitude.</p>
+</div>
+
+<footer>
+    Pranatania Putri Karista Rembet - 221011060019
+</footer>
+
+<script>
+function isScientificNotation(number) {
+    // Check if the number matches the scientific notation pattern
+    return /^[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/.test(number);
+}
+
+function checkNumber() {
+    var number = document.getElementById("numberInput").value;
+    var resultElement = document.getElementById("result");
+
+    if (isScientificNotation(number)) {
+        resultElement.textContent = number + " is in scientific notation.";
+    } else {
+        resultElement.textContent = number + " is not in scientific notation.";
+    }
+}
+
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        checkNumber();
+    }
+});
+
+</script>
+
+</body>
+</html>
